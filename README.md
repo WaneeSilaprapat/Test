@@ -9,4 +9,4 @@ pip install streamlit
 streamlit run main.py
 ```
 
-###Thanks:)
+### Thanks(><)
