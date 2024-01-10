@@ -1,7 +1,7 @@
-import streamlit as st 
+import streamlit as st
 import pandas as pd
 import numpy as np
-from matplotlib import pyplot as plt
+import matplotlib.pyplot as plt
 
 st.set_page_config(layout="wide")
 st.title("Retail Analytics")
@@ -39,9 +39,9 @@ with cols1[0]:
 
     st.pyplot(fig)
 
-
 with cols1[1]:
-    labels = ['Cheese Burger', 'Classic Burger', 'Veggie Burger', 'Supreme Burger', 'Chocolate Milkshake', 'Coffee', 'Coke', 'Soda', 'Strawberry Milkshake', 'Tea', 'Water']
+    labels = ['Cheese Burger', 'Classic Burger', 'Veggie Burger', 'Supreme Burger', 'Chocolate Milkshake', 'Coffee',
+              'Coke', 'Soda', 'Strawberry Milkshake', 'Tea', 'Water']
     sizes = [18.01, 16.5, 15.6, 11.64, 6.45, 6.08, 4.6, 4.61, 7.35, 6.18, 2.98]
     explode = (0.1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)  # Adjusted explode list to match the length of sizes
 
@@ -55,14 +55,10 @@ with cols1[1]:
 
     st.pyplot(fig1)
 
-
-
-
-
-
 cols2 = st.columns(2)
 with cols2[0]:
-    labels = ['Cheese Burger', 'Classic Burger', 'Veggie Burger', 'Supreme Burger', 'Chocolate Milkshake', 'Coffee', 'Coke', 'Soda', 'Strawberry Milkshake', 'Tea', 'Water']
+    labels = ['Cheese Burger', 'Classic Burger', 'Veggie Burger', 'Supreme Burger', 'Chocolate Milkshake', 'Coffee',
+              'Coke', 'Soda', 'Strawberry Milkshake', 'Tea', 'Water']
     sizes = [18.01, 16.5, 15.6, 11.64, 6.45, 6.08, 4.6, 4.61, 7.35, 6.18, 2.98]
     categories = ['food', 'food', 'food', 'food', 'drink', 'drink', 'drink', 'drink', 'drink', 'drink', 'drink']
 
@@ -73,14 +69,13 @@ with cols2[0]:
     food_data = df_sorted[df_sorted['category'] == 'food']
     drink_data = df_sorted[df_sorted['category'] == 'drink']
 
-
     fig, ax = plt.subplots()
     bar_width = 0.35
 
     bar_food = ax.bar(food_data['label'], food_data['size'], bar_width, label='Food')
     bar_drink = ax.bar(drink_data['label'], drink_data['size'], bar_width, label='Drink', alpha=0.7)
 
-    ax.set_xlabel('Menu', fontstyle='italic') 
+    ax.set_xlabel('Menu', fontstyle='italic')
     ax.set_ylabel('Sales')
     ax.set_title('Food and Drink Comparison')
     ax.legend()
@@ -91,13 +86,9 @@ with cols2[0]:
     ax.tick_params(axis='x', colors='white')
     ax.tick_params(axis='y', colors='white')
 
-   
     plt.xticks(rotation=45, ha='right')
 
     st.pyplot(fig)
-
-
-
 
 with cols2[1]:
     widget_counter = 0
@@ -129,9 +120,6 @@ with cols2[1]:
     df_t = df.set_index('Menu').T
     st.line_chart(df_t)
 
-
-
-
 cols3 = st.columns(2)
 with cols3[0]:
     @st.cache_data
@@ -152,16 +140,4 @@ with cols3[0]:
     st.checkbox("Use container width", value=False, key="use_container_width")
 
     df = load_data()
-
-    st.dataframe(df, use_container_width=st.session_state.use_container_width)
-
-
-
-
-
-
-
-
-
-
 
